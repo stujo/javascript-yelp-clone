@@ -40,7 +40,7 @@ const matchCssLoaders = /(^|!)(css-loader)($|!)/;
 
 // Find and Modify existing css loader
 const cssloader = findLoader(config.module.loaders, matchCssLoaders);
-cssloader.test = new RegExp(`\.module${cssloader.test.source}`)
+//cssloader.test = new RegExp(`\.module${cssloader.test.source}`)
 cssloader.include = [src]
 cssloader.loader = cssloader.loader.replace(matchCssLoaders, `$1$2?modules&localIdentName=${cssModuleStyleNames}$3`)
 
