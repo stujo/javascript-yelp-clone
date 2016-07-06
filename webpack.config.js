@@ -96,5 +96,14 @@ config.plugins = [
 ].concat(config.plugins);
 
 
+// Require paths and aliases
+config.resolve.root = [src, node_modules_path]
+config.resolve.alias = {
+    'css': join(src, 'styles'),
+    'containers': join(src, 'containers'),
+    'components': join(src, 'components'),
+    'utils': join(src, 'utils')
+}
+
 module.exports = config;
 
