@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import { browserHistory, Router, Route } from 'react-router'
+import { browserHistory, Router, Route, Redirect } from 'react-router'
 
 import 'font-awesome/css/font-awesome.css'
 
@@ -14,6 +14,7 @@ import Home from 'components/Home/Home'
 const routes = (
 <Router>
   <Route path="/" component={ Home } />
+  <Redirect from="*" to="/" />
 </Router>
 )
 
