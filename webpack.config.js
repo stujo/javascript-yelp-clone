@@ -1,20 +1,47 @@
 const webpack = require('webpack');
 const fs = require('fs');
-const path = require('path'),
-    join = path.join,
-    resolve = path.resolve;
+const path = require('path');
+const join = path.join;
+const resolve = path.resolve;
+const NODE_ENV = process.env.NODE_ENV;
 
-// Get basic configuration from hjs-webpack
-
-const getConfig = require('hjs-webpack');
+console.log("Starting with NODE_ENV='" + NODE_ENV + "'")
 
 const root = resolve(__dirname);
 const src = join(root, 'src');
 const node_modules_path = join(root, 'node_modules');
 const dest = join(root, 'dist');
 
-const NODE_ENV = process.env.NODE_ENV;
 const isDev = NODE_ENV === 'development';
+
+const dotenv = require('dotenv');
+
+const dotEnvVars = dotenv.config();
+
+const environmentEnv = dotenv.config({
+    path: join(root, 'config', `${NODE_ENV}.config.js`),
+    silent: false,
+});
+
+const envVariables = Object.assign({}, dotEnvVars, environmentEnv);
+
+const defines = Object.keys(envVariables)
+    .reduce((memo, key) => {
+        const val = JSON.stringify(envVariables[key]);
+        memo[`__${key.toUpperCase()}__`] = val;
+        return memo;
+    }, {
+        __NODE_ENV__: JSON.stringify(NODE_ENV)
+    });
+
+if (isDev) {
+    console.log("ENV", defines)
+}
+
+// Get basic configuration from hjs-webpack
+
+const getConfig = require('hjs-webpack');
+
 
 var config = getConfig({
     isDev: isDev,
@@ -60,5 +87,14 @@ config.postcss = [].concat([
     require('cssnano')({})
 ])
 // END postcss
+
+
+// Find and Replace __PLACEHOLDERS__ in the code
+// defines come from dotenv
+config.plugins = [
+    new webpack.DefinePlugin(defines)
+].concat(config.plugins);
+
+
 module.exports = config;
 

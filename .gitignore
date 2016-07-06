@@ -1,2 +1,7 @@
 node_modules
 npm-debug.log
+.env
+config/development.config.js
+config/test.config.js
+config/production.config.js
+
