@@ -13,6 +13,7 @@ const node_modules_path = join(root, 'node_modules');
 const dest = join(root, 'dist');
 
 const isDev = NODE_ENV === 'development';
+const isTest = NODE_ENV === 'test';
 
 const dotenv = require('dotenv');
 
@@ -104,6 +105,13 @@ config.resolve.alias = {
     'components': join(src, 'components'),
     'utils': join(src, 'utils')
 }
+
+// What would this this do?
+// config.externals = {
+//   'react/lib/ReactContext': true,
+//   'react/lib/ExecutionEnvironment': true,
+//   'react/addons': true
+// }
 
 module.exports = config;
 

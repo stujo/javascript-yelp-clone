@@ -1,8 +1,10 @@
 // Karma configuration
 // Generated on Wed Jul 06 2016 10:23:32 GMT-0700 (PDT)
 
+var webpackConfig = require('./webpack.config');
+
 module.exports = function(config) {
-  config.set({
+config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
@@ -10,29 +12,44 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine'],
+    frameworks: ['mocha', 'chai'],
+
+    plugins: [
+        'karma-mocha',
+        'karma-chai',
+        'karma-webpack',
+        'karma-phantomjs-launcher',
+        'karma-spec-reporter',
+        'karma-sourcemap-loader'
+    ],
+
+    webpack: webpackConfig,
+
+    webpackServer: {
+        noInfo: true
+    },
 
 
     // list of files / patterns to load in the browser
     files: [
+        'tests.webpack.js'
     ],
-
 
     // list of files to exclude
-    exclude: [
-    ],
+    exclude: [],
 
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+        'tests.webpack.js': ['webpack', 'sourcemap']
     },
 
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['spec'],
 
 
     // web server port
@@ -54,7 +71,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome'],
+    browsers: ['PhantomJS'],
 
 
     // Continuous Integration mode
@@ -64,5 +81,5 @@ module.exports = function(config) {
     // Concurrency level
     // how many browser should be started simultaneous
     concurrency: Infinity
-  })
+})
 }
