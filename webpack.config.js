@@ -106,12 +106,14 @@ config.resolve.alias = {
     'utils': join(src, 'utils')
 }
 
-// What would this this do?
-// config.externals = {
-//   'react/lib/ReactContext': true,
-//   'react/lib/ExecutionEnvironment': true,
-//   'react/addons': true
-// }
+if (isTest) {
+    // What would this this do?
+    config.externals = {
+        'react/lib/ReactContext': true,
+        'react/lib/ExecutionEnvironment': true,
+        'react/addons': true
+    }
+}
 
 module.exports = config;
 
