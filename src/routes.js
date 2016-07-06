@@ -1,12 +1,15 @@
 import React from 'react'
 import { browserHistory, Router, Route, Redirect } from 'react-router'
 
-import Home from 'components/Home/Home'
+import makeMainRoutes from './views/Main/routes'
+
+const main = makeMainRoutes();
 
 export const routeFactory = () => (
 <Router>
-  <Route path="/" component={ Home } />
-  <Redirect from="*" to="/" />
+  <Route path=''>
+    { main }
+  </Route>
 </Router>
 )
 

@@ -19,7 +19,10 @@ class App extends React.Component {
     render() {
         return (
             <div className={ styles.wrapper }>
-              { this.content }
+              <h1>Demo</h1>
+              <div>
+                { this.content }
+              </div>
             </div>
         )
     }
