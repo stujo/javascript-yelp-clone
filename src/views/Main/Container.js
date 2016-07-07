@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Map, { GoogleApiWrapper } from 'google-maps-react'
+import { Map as GoogleMap, GoogleApiWrapper } from 'google-maps-react'
 
 import { searchNearby } from 'utils/googleApiHelpers'
 import Header from 'components/Header/Header'
@@ -38,10 +38,14 @@ export class Container extends React.Component {
 
     render() {
         return (
-            <Map className={ styles.wrapper } google={ this.props.google } onReady={ this.onReady.bind(this) } visible={ false }>
+            <GoogleMap className={ styles.wrapper } google={ this.props.google } onReady={ this.onReady.bind(this) } visible={ false }>
               <Header/>
               <Sidebar title={ 'Restaurants' } places={ this.state.places } />
-            </Map>
+              <div className={ styles.content }>
+                { /* Setting children routes to be rendered*/ }
+                { this.props.children }
+              </div>
+            </GoogleMap>
         )
     }
 }
