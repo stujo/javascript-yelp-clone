@@ -9,14 +9,8 @@
     flex: 2;
     margin: 0;
     &:hover {
-      color: #000000;
+      color: #555555;
     }
-  }
-
-  .rating {
-    text-align: right;
-    display: inline;
-    flex: 1;
   }
 
   &:last-child {
@@ -24,13 +18,13 @@
   }
 }
 
-.listing_title {
-	font-weight: bold;
-}
-
 .listing {
   height: 100%;
   overflow: auto;
   padding-bottom: 60px;
   margin: 0;
+
+  .title {
+	font-weight: bold;
+  }	
 }

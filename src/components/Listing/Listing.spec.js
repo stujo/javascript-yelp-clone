@@ -28,7 +28,7 @@ describe('<Listing />', () => {
     })
 
     it('has a title', () => {
-        expect(wrapper.find(`.${styles.listing_title}`).text())
+        expect(wrapper.find(`.${styles.title}`).text())
             .to.equal('Cafes');
     })
 })
