@@ -1,20 +1,12 @@
 @import url("../../styles/base.css");
 
 .wrapper {
-  overflow-y: scroll;
-  display: flex;
   margin: 0;
   padding: 0 15px;
-
-  height: 100vh;
-  -webkit-box-orient: horizontal;
-  -o-box-orient: horizontal;
+  margin-top: var(--topbar-height);
 }
 
 .content {
   padding: 0;
   margin: 0;
-  position: relative;
-  flex: 2;
-  margin-top: var(--topbar-height);
 }

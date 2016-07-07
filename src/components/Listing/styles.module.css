@@ -2,6 +2,10 @@
 	color: blue;
 }
 
+.listing_title {
+	font-weight: bold;
+}
+
 .listing {
   height: 100%;
   overflow: auto;

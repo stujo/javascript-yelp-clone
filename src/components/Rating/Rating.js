@@ -6,7 +6,7 @@ export class Rating extends React.Component {
     render() {
         return (
             <div className={ styles.rating }>
-              { this.props.rating / 5 }
+              { this.props.rating ? this.props.rating : 'N/A' }
             </div>
         )
     }

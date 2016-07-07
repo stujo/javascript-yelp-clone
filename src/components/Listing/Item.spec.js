@@ -16,8 +16,8 @@ describe('<Item />', () => {
         wrapper = shallow(<Item place={ place } />)
     });
 
-    it('contains a title component with yelp', () => {
-        expect(wrapper.find('h1').first().text())
+    it('contains an h3 title', () => {
+        expect(wrapper.find('h3').first().text())
             .to.equal(place.name)
     });
 

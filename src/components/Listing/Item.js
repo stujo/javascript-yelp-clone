@@ -11,7 +11,7 @@ export class Item extends React.Component {
         const {place} = this.props;
         return (
             <div className={ styles.item }>
-              <h1>{ place.name }</h1>
+              <h3>{ place.name }</h3>
               <Rating rating={ place.rating } />
             </div>
         )

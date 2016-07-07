@@ -10,6 +10,7 @@ export class Listing extends React.Component {
     render() {
         return (
             <div className={ styles.listing }>
+              <h2 className={ styles.listing_title }>{ this.props.title }</h2>
               { this.props.places.map(place => {
                     return <Item place={ place } onClick={ this.props.onClick } key={ place.id } />;
                 }) }

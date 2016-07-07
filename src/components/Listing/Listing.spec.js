@@ -15,14 +15,20 @@ describe('<Listing />', () => {
     }];
 
     beforeEach(() => {
-        wrapper = shallow(<Listing places={ places } />)
+        wrapper = shallow(<Listing title="Cafes" places={ places } />)
     });
 
     it('wraps the component in a listing css class', () => {
         expect(wrapper.hasClass(styles.listing)).to.equal(true);
     })
+
     it('has an item for each place in the places prop', () => {
         expect(wrapper.find(Item).length)
             .to.equal(places.length);
+    })
+
+    it('has a title', () => {
+        expect(wrapper.find(`.${styles.listing_title}`).text())
+            .to.equal('Cafes');
     })
 })
