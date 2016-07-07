@@ -14,6 +14,7 @@ const dest = join(root, 'dist');
 
 const isDev = NODE_ENV === 'development';
 const isTest = NODE_ENV === 'test';
+const isProduction = NODE_ENV === 'production';
 
 const dotenv = require('dotenv');
 
@@ -85,8 +86,14 @@ config.module.loaders.push({
 config.postcss = [].concat([
     require('precss')({}),
     require('autoprefixer')({}),
-    require('cssnano')({})
 ])
+
+if (isProduction) {
+    config.postcss = [].concat([
+        require('cssnano')({})
+    ])
+
+}
 // END postcss
 
 
