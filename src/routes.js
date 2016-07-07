@@ -10,6 +10,7 @@ export const routeFactory = () => (
   <Route path=''>
     { main }
   </Route>
+  <Redirect from="*" to="/" />
 </Router>
 )
 
