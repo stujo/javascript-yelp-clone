@@ -8,10 +8,13 @@
   left: 0;
   background: var(--highlight);
   width: 100%;
-  padding: 0 25px;
   height: var(--topbar-height);
   line-height: var(--topbar-height);
   color: #fff;
+  
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 
   a {
     text-transform: uppercase;
@@ -21,9 +24,14 @@
     line-height: 40px;
     h1 { font-size: 28px; }
   }
+
+  .brand {
+  	padding: 0 10px;
+    text-align: right;
+  }
+
   section {
-    position: absolute;
-    top: 0px;
-    right: 25px;
+  	padding: 0 10px;
+    text-align: right;
   }
 }
