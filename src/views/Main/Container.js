@@ -3,7 +3,8 @@ import React from 'react'
 import { Map as GoogleMap, GoogleApiWrapper } from 'google-maps-react'
 
 import { searchNearby } from 'utils/googleApiHelpers'
-import Sidebar from 'components/Sidebar/Sidebar'
+
+import Sidebar from './Sidebar/Sidebar'
 
 import styles from './styles.module.css'
 

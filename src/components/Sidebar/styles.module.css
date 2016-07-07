@@ -1,8 +1,0 @@
-@import url("../../styles/base.css");
-
-.sidebar {
-  height: 100%;
-  top: var(--topbar-height);
-  left: 0;
-  overflow: hidden;
-}
