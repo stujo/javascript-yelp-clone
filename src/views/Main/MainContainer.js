@@ -33,16 +33,18 @@ export class MainContainer extends React.Component {
                 })
             }).catch((status, result) => {
             // There was an error
+            console.error(status, result)
         })
     }
 
     render() {
+        var childrenWithProps = this.props.children ? React.cloneElement(this.props.children, this.props) : null;
+
         return (
             <GoogleMap className={ styles.wrapper } google={ this.props.google } onReady={ this.onReady.bind(this) } visible={ false }>
               <Sidebar title={ 'Restaurants' } places={ this.state.places } />
               <div className={ styles.content }>
-                { /* Setting children routes to be rendered (come from React Router?)*/ }
-                { this.props.children }
+                { childrenWithProps }
               </div>
             </GoogleMap>
         )
