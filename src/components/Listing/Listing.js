@@ -2,9 +2,6 @@ import React from 'react'
 
 import styles from './styles.module.css'
 
-console.log("ITEM STYLES")
-console.log(styles)
-
 import { Link } from 'react-router'
 
 import Item from './Item'
