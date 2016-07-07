@@ -1,10 +1,12 @@
+@import url("../../styles/colors.css");
+
 .rating {
 
 }
 
 .sprite {
   unicode-bidi: bidi-override;
-  color: #404040;
+  color: var(--dark);
   font-size: 25px;
   height: 25px;
   width: 125px;
@@ -15,7 +17,7 @@
 }
 
 .top {
-  color: #48b5e9;
+  color: var(--highlight);
   padding: 0;
   position: absolute;
   z-index: 1;
@@ -29,5 +31,5 @@
   padding: 0;
   display: block;
   z-index: 0;
-  color: #a2a2a2;
+  color: var(--light-gray);
 }
