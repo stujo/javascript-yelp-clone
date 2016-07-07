@@ -1,13 +1,13 @@
 import React from 'react'
 import { Route } from 'react-router'
-import Container from './Container'
+import MainContainer from './MainContainer'
 import Map from './Map/Map'
 
 
 export const makeMainRoutes = () => {
 
     return (
-        <Route path="/" component={ Container }>
+        <Route path="/" component={ MainContainer }>
           <Route path="map" component={ Map } />
         </Route>
     )

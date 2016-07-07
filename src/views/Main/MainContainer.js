@@ -8,7 +8,7 @@ import Sidebar from './Sidebar/Sidebar'
 
 import styles from './styles.module.css'
 
-export class Container extends React.Component {
+export class MainContainer extends React.Component {
     constructor(props) {
         super(props);
 
@@ -41,7 +41,7 @@ export class Container extends React.Component {
             <GoogleMap className={ styles.wrapper } google={ this.props.google } onReady={ this.onReady.bind(this) } visible={ false }>
               <Sidebar title={ 'Restaurants' } places={ this.state.places } />
               <div className={ styles.content }>
-                { /* Setting children routes to be rendered*/ }
+                { /* Setting children routes to be rendered (come from React Router?)*/ }
                 { this.props.children }
               </div>
             </GoogleMap>
@@ -52,4 +52,4 @@ export class Container extends React.Component {
 
 export default GoogleApiWrapper({
     apiKey: __GAPI_KEY__
-})(Container)
+})(MainContainer)

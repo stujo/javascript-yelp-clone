@@ -3,15 +3,15 @@ import { expect } from 'chai'
 import { shallow } from 'enzyme'
 import { mount } from 'enzyme'
 
-import Container from './Container'
+import MainContainer from './MainContainer'
 import Sidebar from 'components/Sidebar/Sidebar'
 
 import Map, { GoogleApiWrapper } from 'google-maps-react'
 
-describe('<Container />', function() {
+describe('<MainContainer />', function() {
 let wrapper;
 beforeEach(() => {
-    wrapper = mount(<Container />)
+    wrapper = mount(<MainContainer />)
 })
 
 it('Initializes the Sidebar title', () => {
