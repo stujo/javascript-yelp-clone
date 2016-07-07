@@ -11,11 +11,6 @@ beforeEach(() => {
     wrapper = shallow(<App />)
 })
 
-it('has a single wrapper element', () => {
-    expect(wrapper.find(`.${styles.wrapper}`))
-        .to.have.length(1);
-});
-
 it('has a Router component', () => {
     expect(wrapper.find('Router'))
         .to.have.length(1);

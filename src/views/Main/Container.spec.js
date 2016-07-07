@@ -4,6 +4,7 @@ import { shallow } from 'enzyme'
 import { mount } from 'enzyme'
 
 import Container from './Container'
+import Sidebar from 'components/Sidebar/Sidebar'
 
 import Map, { GoogleApiWrapper } from 'google-maps-react'
 
@@ -13,13 +14,12 @@ beforeEach(() => {
     wrapper = mount(<Container />)
 })
 
-it('has a title', () => {
-    expect(wrapper.find("h1").text()).to.eq('The Map')
+it('Initializes the Sidebar title', () => {
+    expect(wrapper.find(Sidebar).props().title).to.eq('Restaurants')
 });
 
 it('has a Map component', () => {
     expect(wrapper.find(Map)).to.have.length(1);
 });
-
 
 });
