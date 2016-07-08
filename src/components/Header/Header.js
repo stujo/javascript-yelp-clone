@@ -10,7 +10,8 @@ export class Header extends React.Component {
             <div className={ styles.topbar }>
               <div className={ styles.brand }>
                 <Link to="/">
-                <h1>Yelp</h1></Link>
+                <h1>Yelp</h1>
+                </Link>
               </div>
               <section>
                 Section Text
