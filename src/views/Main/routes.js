@@ -2,14 +2,21 @@ import React from 'react'
 import { Route } from 'react-router'
 import MainContainer from './MainContainer'
 import Map from './Map/Map'
+import PlaceDetail from './PlaceDetail/PlaceDetail'
 
 export const routes = {
     path: '/',
     component: MainContainer,
-    childRoutes: [{
-        path: 'map',
-        component: Map
-    }]
+    childRoutes: [
+        {
+            path: 'map',
+            component: Map
+        },
+        {
+            path: 'detail/:placeId',
+            component: PlaceDetail
+        }
+    ]
 };
 
 
