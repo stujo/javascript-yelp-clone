@@ -44,7 +44,13 @@ export class MainContainer extends React.Component {
         if (null === this.props.children) {
             return (<noscript/>);
         }
-        var childrenWithProps = this.props.children ? React.cloneElement(this.props.children, this.props) : null;
+
+        const childrenWithProps = React.cloneElement(this.props.children,
+            {
+                google: this.props.google,
+                places: this.state.places || [],
+                loaded: this.props.loaded
+            });
 
         return ( <div className={ styles.content }>
                    { childrenWithProps }
