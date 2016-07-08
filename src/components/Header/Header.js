@@ -14,7 +14,7 @@ export class Header extends React.Component {
                 </Link>
               </div>
               <section>
-                Section Text
+                <Link to="/map">Map View</Link>
               </section>
             </div>
         )
