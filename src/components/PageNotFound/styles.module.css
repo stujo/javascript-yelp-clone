@@ -1,0 +1,15 @@
+@import url("../../styles/base.css");
+
+.wrapper {
+  margin: 0;
+  padding: 10px;
+  margin-top: var(--topbar-height);
+}
+
+.content {
+
+}
+
+.title {
+
+}
