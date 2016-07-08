@@ -1,17 +1,17 @@
 import React from 'react'
-import { browserHistory, Router, Route, Redirect } from 'react-router'
 
-import makeMainRoutes from './views/Main/routes'
+import PageNotFound from 'components/PageNotFound/PageNotFound'
 
-const main = makeMainRoutes();
+import { routes as mainRoutes } from 'views/Main/routes'
 
-export const routeFactory = () => (
-<Router>
-  <Route path=''>
-    { main }
-  </Route>
-  <Redirect from="*" to="/" />
-</Router>
-)
+const routes = {
+    childRoutes: [
+        mainRoutes,
+        {
+            path: '*',
+            component: PageNotFound
+        }
+    ]
+}
 
-export default routeFactory
+export default routes
