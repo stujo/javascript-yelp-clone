@@ -20,6 +20,11 @@ export class MainContainer extends React.Component {
         }
     }
 
+    onMarkerClick(item) {
+        console.log(item);
+        alert(item);
+    }
+
     onReady(mapProps, map) {
         const {google} = this.props;
         const opts = {
@@ -49,7 +54,8 @@ export class MainContainer extends React.Component {
             {
                 google: this.props.google,
                 places: this.state.places || [],
-                loaded: this.props.loaded
+                loaded: this.props.loaded,
+                onMarkerClick: this.onMarkerClick.bind(this)
             });
 
         return ( <div className={ styles.content }>
