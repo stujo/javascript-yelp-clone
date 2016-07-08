@@ -11,11 +11,9 @@ import 'css/app.css'
 
 import routes from './routes'
 
-import App from 'containers/App/App'
-
 const mountNode = document.querySelector('#root');
 
 ReactDOM.render(
-    <App history={ browserHistory } routes={ routes } />,
+    <Router routes={ routes } history={ browserHistory } />,
     mountNode
 );
