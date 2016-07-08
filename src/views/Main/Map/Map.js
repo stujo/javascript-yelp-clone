@@ -8,7 +8,6 @@ class Map extends React.Component {
 
     render() {
         return (
-            //    <div className={ styles.map }>hello</div>
             <GoogleMap className={ styles.map } google={ this.props.google }>
             </GoogleMap>
         )

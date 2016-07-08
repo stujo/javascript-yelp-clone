@@ -4,7 +4,6 @@ import { Router } from 'react-router';
 
 import styles from './styles.module.css'
 
-import Header from 'components/Header/Header'
 
 class App extends React.Component {
     static propTypes = {
@@ -15,7 +14,6 @@ class App extends React.Component {
     render() {
         return (
             <div className={ styles.app }>
-              <Header/>
               <Router routes={ this.props.routes } history={ this.props.history } />
             </div>
         )
