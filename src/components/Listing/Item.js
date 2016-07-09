@@ -10,8 +10,10 @@ const Item = (props) => {
     const {place} = props;
     return (
         <div className={ styles.item }>
+          <Link to={ "/detail/" + place.place_id } className={ styles.heading }>
           <h3>{ place.name }</h3>
-          <Rating rating={ place.rating } />
+          </Link>
+          <Rating rating={ place.rating } className={ styles.rating } />
         </div>
     )
 }

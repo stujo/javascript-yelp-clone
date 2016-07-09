@@ -35,8 +35,10 @@ export class MainContainer extends React.Component {
         }
         searchNearby(google, map, opts)
             .then((results, pagination) => {
+                console.log("Setting State from searchNearby")
                 this.setState({
                     places: results,
+                    map: map,
                     pagination
                 })
             }).catch((status, result) => {
@@ -50,12 +52,14 @@ export class MainContainer extends React.Component {
         if (null === this.props.children) {
             return (<noscript/>);
         }
+        console.log("Getting content")
 
         const childrenWithProps = React.cloneElement(this.props.children,
             {
                 google: this.props.google,
                 places: this.state.places || [],
                 loaded: this.props.loaded,
+                map: this.state.map,
                 onMarkerClick: this.onMarkerClick.bind(this)
             });
 
