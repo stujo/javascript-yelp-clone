@@ -21,7 +21,7 @@ const dotenv = require('dotenv');
 const dotEnvVars = dotenv.config();
 
 const environmentEnv = dotenv.config({
-    path: join(root, 'config', `${NODE_ENV}.config.js`),
+    path: join(root, 'config', `${NODE_ENV}.config.env`),
     silent: false,
 });
 

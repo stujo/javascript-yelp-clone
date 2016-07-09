@@ -4,8 +4,10 @@ import MainContainer from './MainContainer'
 import Map from './Map/Map'
 import PlaceDetail from './PlaceDetail/PlaceDetail'
 
+const ROOT_PATH = __ROUTER_PREFIX__ || "/"
+
 export const routes = {
-    path: '/',
+    path: ROOT_PATH,
     component: MainContainer,
     childRoutes: [
         {
