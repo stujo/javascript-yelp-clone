@@ -73,10 +73,14 @@ export class MainContainer extends React.Component {
         return (
             <div className={ styles.app }>
               <Header/>
-              <GoogleMap className={ styles.wrapper } google={ this.props.google } onReady={ this.onReady.bind(this) } visible={ false }>
-                <Sidebar title={ 'Restaurants' } places={ this.state.places } />
-                { this.content() }
-              </GoogleMap>
+              <div className={ styles.panel }>
+                <GoogleMap google={ this.props.google } onReady={ this.onReady.bind(this) } visible={ false }>
+                  <div className={ styles.wrapper }>
+                    <Sidebar title={ 'Restaurants' } places={ this.state.places } />
+                    { this.content() }
+                  </div>
+                </GoogleMap>
+              </div>
             </div>
         )
     }
