@@ -4,6 +4,7 @@ import styles from './styles.module.css'
 
 import { getDetails } from 'utils/googleApiHelpers'
 
+import PlacePhoto from './PlacePhoto/PlacePhoto'
 
 export class PlaceDetail extends React.Component {
 
@@ -47,11 +48,23 @@ export class PlaceDetail extends React.Component {
 
     get content() {
         if (this.state.loading) {
-            return "Loading Please Wait"
+            return (<div class="loading">Loading Please Wait</div>);
         } else {
             const {place} = this.state;
-            return place.name
+            return (<div>
+                      <h1>{ place.name }</h1>
+                      <div className={ styles.gallery }>
+                        { this.photos(place) }
+                      </div>
+                    </div>
+                );
         }
+    }
+
+    photos(place) {
+        return place.photos.slice(0, 8).map(function(photo) {
+            return (<PlacePhoto photo={ photo } />)
+        })
     }
 
     render() {
