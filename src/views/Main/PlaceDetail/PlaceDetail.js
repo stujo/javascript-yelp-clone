@@ -6,6 +6,11 @@ import { getDetails } from 'utils/googleApiHelpers'
 
 import PlacePhoto from './PlacePhoto/PlacePhoto'
 
+const photo_url_key_args = {
+    'maxWidth': 150,
+    'maxHeight': 150
+}
+
 export class PlaceDetail extends React.Component {
 
     constructor(props) {
@@ -62,8 +67,11 @@ export class PlaceDetail extends React.Component {
     }
 
     photos(place) {
+        if (!place.photos) {
+            return;
+        }
         return place.photos.slice(0, 8).map(function(photo) {
-            return (<PlacePhoto photo={ photo } />)
+            return (<PlacePhoto photo={ photo } key={ photo.getUrl(photo_url_key_args) } />)
         })
     }
 
