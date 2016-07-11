@@ -13,7 +13,7 @@ const Header = (props) => {
             </Link>
           </div>
           <section>
-            <Link to="/map">Map</Link>
+            <Link to={__ROUTER_PREFIX__ + 'map'}>Map</Link>
           </section>
         </div>
     )
