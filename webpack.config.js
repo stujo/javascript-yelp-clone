@@ -49,6 +49,13 @@ var config = getConfig({
     isDev: isDev,
     in: join(src, 'app.js'),
     out: dest,
+    html: function(context) {
+        context.title = "Kelp Clone"
+        context.publicPath = envVariables.ROUTER_PREFIX
+        return {
+            'index.html': context.defaultTemplate(),
+        }
+    },
     clearBeforeBuild: true
 })
 
