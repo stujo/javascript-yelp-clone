@@ -51,7 +51,6 @@ var config = getConfig({
     out: dest,
     html: function(context) {
         context.title = "Kelp Clone"
-        context.publicPath = envVariables.ROUTER_PREFIX
         return {
             'index.html': context.defaultTemplate(),
         }
@@ -99,8 +98,8 @@ if (isProduction) {
     config.postcss = [].concat([
         require('cssnano')({})
     ])
-
 }
+
 // END postcss
 
 

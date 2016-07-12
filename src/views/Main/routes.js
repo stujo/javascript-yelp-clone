@@ -4,7 +4,7 @@ import MainContainer from './MainContainer'
 import Map from './Map/Map'
 import PlaceDetail from './PlaceDetail/PlaceDetail'
 
-const ROOT_PATH = __ROUTER_PREFIX__ || "/"
+const ROOT_PATH = "/"
 
 export const routes = {
     path: ROOT_PATH,
