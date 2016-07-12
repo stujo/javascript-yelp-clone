@@ -94,11 +94,11 @@ config.postcss = [].concat([
     require('autoprefixer')({}),
 ])
 
-if (isProduction) {
-    config.postcss = [].concat([
-        require('cssnano')({})
-    ])
-}
+// if (isProduction) {
+//     config.postcss = [].concat([
+//         require('cssnano')({})
+//     ])
+// }
 
 // END postcss
 
