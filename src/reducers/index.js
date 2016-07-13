@@ -17,7 +17,7 @@ function googleMap(state = initialGoogleMap, action) {
 }
 
 const initialPlaces = {
-    places: []
+    places: undefined
 }
 
 function places(state = initialPlaces, action) {

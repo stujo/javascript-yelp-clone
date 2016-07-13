@@ -17,6 +17,16 @@ export class MainContainer extends React.Component {
         push(`/detail/${place.place_id}`)
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log("shouldComponentUpdate", nextProps, nextState);
+        return true
+    }
+
+    // Pick up google from HOC - GoogleApiWrapper
+    componentWillReceiveProps(nextProps) {
+        console.log("componentWillReceiveProps", nextProps)
+    }
+
     onReady(mapProps, map) {
         console.log("onReady")
         const {google, radius, types} = this.props;
@@ -51,7 +61,6 @@ export class MainContainer extends React.Component {
         if (null === this.props.children) {
             return (<noscript/>);
         }
-        console.log("Getting content")
 
         const childrenWithProps = React.cloneElement(this.props.children,
             {
@@ -73,11 +82,13 @@ export class MainContainer extends React.Component {
 
         const state = this.context.store.getState();
 
+        console.log("this.props.google", this.props.google)
+
         return (
             <div className={ styles.app }>
               <Header/>
               <div className={ styles.panel }>
-                <GoogleMap google={ state.googleMap.google } onReady={ this.onReady.bind(this) } visible={ false }>
+                <GoogleMap google={ this.props.google } onReady={ this.onReady.bind(this) } visible={ false }>
                   <div className={ styles.wrapper }>
                     <Sidebar title={ 'Restaurants' } places={ state.places.places } />
                     { this.content() }
