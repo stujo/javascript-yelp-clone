@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 import styles from './styles.module.css'
 
@@ -12,13 +12,6 @@ const photo_url_key_args = {
 }
 
 export class PlaceDetail extends React.Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            loading: true
-        }
-    }
 
     componentDidMount() {
         if (this.props.map) {
@@ -38,24 +31,36 @@ export class PlaceDetail extends React.Component {
         const {google, map} = this.props;
         const {placeId} = this.props.params;
 
+        this.context.store.dispatch({
+            type: 'PLACE_DETAIL.LOADING',
+            placeId
+        })
+
         getDetails(google, map, placeId)
             .then((place) => {
                 console.log("Place", place)
-                this.setState({
-                    loading: false,
+
+                this.context.store.dispatch({
+                    type: 'PLACE_DETAIL.GOT_PLACE',
+                    placeId,
                     place
                 })
+
+            // this.setState({
+            //     loading: false,
+            //     place
+            // })
             }).catch((status, result) => {
             // There was an error
             console.error(status, result)
         })
     }
 
-    get content() {
-        if (this.state.loading) {
-            return (<div class="loading">Loading Please Wait</div>);
+    content(state) {
+        if (state.loading) {
+            return (<div className="loading">Loading Please Wait</div>);
         } else {
-            const {place} = this.state;
+            const {place} = state;
             return (<div>
                       <h1>{ place.name }</h1>
                       <div className={ styles.gallery }>
@@ -76,13 +81,17 @@ export class PlaceDetail extends React.Component {
     }
 
     render() {
-        const {place} = this.state;
+        const {placeDetail} = this.context.store.getState();
         return (
             <div>
-              { this.content }
+              { this.content(placeDetail) }
             </div>
             );
     }
+}
+
+PlaceDetail.contextTypes = {
+    store: PropTypes.object
 }
 
 export default PlaceDetail

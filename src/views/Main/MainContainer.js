@@ -17,18 +17,7 @@ export class MainContainer extends React.Component {
         push(`/detail/${place.place_id}`)
     }
 
-    shouldComponentUpdate(nextProps, nextState) {
-        console.log("shouldComponentUpdate", nextProps, nextState);
-        return true
-    }
-
-    // Pick up google from HOC - GoogleApiWrapper
-    componentWillReceiveProps(nextProps) {
-        console.log("componentWillReceiveProps", nextProps)
-    }
-
     onReady(mapProps, map) {
-        console.log("onReady")
         const {google, radius, types} = this.props;
         const opts = {
             location: map.center,
@@ -56,7 +45,7 @@ export class MainContainer extends React.Component {
         })
     }
 
-    content() {
+    content(state) {
         // Don't render an empty div as this messes up the layout
         if (null === this.props.children) {
             return (<noscript/>);
@@ -64,10 +53,9 @@ export class MainContainer extends React.Component {
 
         const childrenWithProps = React.cloneElement(this.props.children,
             {
-                google: this.props.google,
-                places: this.props.places,
-                loaded: this.props.loaded,
-                map: this.props.map,
+                google: state.googleMap.google,
+                places: state.places.places,
+                map: state.googleMap.map,
                 onMarkerClick: this.onMarkerClick.bind(this)
             });
 
@@ -78,20 +66,15 @@ export class MainContainer extends React.Component {
 
 
     render() {
-        console.log("MainContainer", this.props)
-
         const state = this.context.store.getState();
-
-        console.log("this.props.google", this.props.google)
-
         return (
             <div className={ styles.app }>
               <Header/>
               <div className={ styles.panel }>
-                <GoogleMap google={ this.props.google } onReady={ this.onReady.bind(this) } visible={ false }>
+                <GoogleMap google={ state.google || this.props.google } onReady={ this.onReady.bind(this) } visible={ false }>
                   <div className={ styles.wrapper }>
                     <Sidebar title={ 'Restaurants' } places={ state.places.places } />
-                    { this.content() }
+                    { this.content(state) }
                   </div>
                 </GoogleMap>
               </div>
