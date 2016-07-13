@@ -18,6 +18,7 @@ export class MainContainer extends React.Component {
     }
 
     onReady(mapProps, map) {
+        console.log("onReady")
         const {google, radius, types} = this.props;
         const opts = {
             location: map.center,
@@ -33,6 +34,7 @@ export class MainContainer extends React.Component {
 
         searchNearby(google, map, opts)
             .then((results, pagination) => {
+                console.log("searchNearby", results, pagination)
                 this.context.store.dispatch({
                     type: 'PLACES.GOT_PLACES',
                     places: results,
@@ -69,13 +71,15 @@ export class MainContainer extends React.Component {
     render() {
         console.log("MainContainer", this.props)
 
+        const state = this.context.store.getState();
+
         return (
             <div className={ styles.app }>
               <Header/>
               <div className={ styles.panel }>
-                <GoogleMap google={ this.props.google } onReady={ this.onReady.bind(this) } visible={ false }>
+                <GoogleMap google={ state.googleMap.google } onReady={ this.onReady.bind(this) } visible={ false }>
                   <div className={ styles.wrapper }>
-                    <Sidebar title={ 'Restaurants' } places={ this.props.places } />
+                    <Sidebar title={ 'Restaurants' } places={ state.places.places } />
                     { this.content() }
                   </div>
                 </GoogleMap>

@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux'
 
-const initialState = { }
+const initialGoogleMap = {
+}
 
-function googleMap(state = initialState, action) {
+function googleMap(state = initialGoogleMap, action) {
     console.log("googleMap", state, action)
     switch (action.type) {
     case 'GOOGLE_MAP.GOT_MAP':
@@ -15,7 +16,11 @@ function googleMap(state = initialState, action) {
     }
 }
 
-function places(state = initialState, action) {
+const initialPlaces = {
+    places: []
+}
+
+function places(state = initialPlaces, action) {
     console.log("places", state, action)
     switch (action.type) {
     case 'PLACES.GOT_PLACES':
