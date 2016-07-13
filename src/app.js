@@ -1,6 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+window.React = React;
+
+// TODO LATER
+//import { syncHistoryWithStore } from 'react-router-redux'
+
 import { createStore } from 'redux'
 
 import { browserHistory, Router, Route, Redirect } from 'react-router'
@@ -13,13 +18,17 @@ import 'css/app.css'
 
 import routes from './routes'
 
-import stateStore from './reducers'
+import kelpAppReducers from './reducers'
 
+// Dan Abramov calls this  'Provider' : https://www.youtube.com/watch?v=VJ38wSFbM3A
 import StoreContextProvider from 'components/StoreContextProvider/StoreContextProvider'
 
 const mountNode = document.querySelector('#root');
 
-const store = createStore(stateStore)
+const store = createStore(kelpAppReducers)
+
+// TODO LATER
+// const history = syncHistoryWithStore(browserHistory, store)
 
 function render() {
     ReactDOM.render(

@@ -2,6 +2,7 @@ import { PropTypes, Component } from 'react'
 
 export default class StoreContextProvider extends Component {
     getChildContext() {
+        window.store = this.props.store;
         return {
             store: this.props.store
         }
