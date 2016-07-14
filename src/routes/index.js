@@ -2,13 +2,13 @@ import React from 'react'
 
 import PageNotFound from 'components/PageNotFound/PageNotFound'
 
-import { routes as mainRoutes } from 'views/Main/routes'
+import { homeRoutes } from './home'
 
 
 // Using PlainRoute https://github.com/reactjs/react-router/blob/master/docs/API.md#plainroute
 const routes = {
     childRoutes: [
-        mainRoutes,
+        homeRoutes,
         {
             path: '*',
             component: PageNotFound

@@ -1,14 +1,14 @@
 import React from 'react'
 import { Route } from 'react-router'
-import MainContainer from './MainContainer'
-import Map from 'components/Map/Map'
+import HomeContainer from 'containers/HomeContainer/HomeContainer'
 import PlaceContainer from 'containers/PlaceContainer/PlaceContainer'
+import Map from 'components/Map/Map'
 
 const ROOT_PATH = "/"
 
-export const routes = {
+export const homeRoutes = {
     path: ROOT_PATH,
-    component: MainContainer,
+    component: HomeContainer,
     childRoutes: [
         {
             path: 'map',
@@ -21,11 +21,4 @@ export const routes = {
     ]
 };
 
-
-// export const routes = (
-// <Route path="/" component={ MainContainer }>
-//   <Route path="map1" component={ Map } />
-// </Route>
-// )
-
-export default routes;
+export default homeRoutes;
