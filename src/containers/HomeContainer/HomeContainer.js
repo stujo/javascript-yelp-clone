@@ -10,7 +10,7 @@ import Sidebar from 'components/Sidebar/Sidebar'
 
 import styles from './styles.module.css'
 
-export class MainContainer extends React.Component {
+export class HomeContainer extends React.Component {
     onMarkerClick(item) {
         const {place} = item;
         const {push} = this.context.router;
@@ -83,7 +83,7 @@ export class MainContainer extends React.Component {
     }
 }
 
-MainContainer.propTypes = {
+HomeContainer.propTypes = {
     places: PropTypes.arrayOf(PropTypes.object),
     google: PropTypes.object,
     map: PropTypes.object,
@@ -91,12 +91,12 @@ MainContainer.propTypes = {
     children: PropTypes.object
 }
 
-MainContainer.contextTypes = {
+HomeContainer.contextTypes = {
     router: PropTypes.object,
     store: PropTypes.object
 }
 
-MainContainer.defaultProps = {
+HomeContainer.defaultProps = {
     google: null,
     map: null,
     loaded: false,
@@ -107,39 +107,6 @@ MainContainer.defaultProps = {
 
 export default GoogleApiWrapper({
     apiKey: __GAPI_KEY__
-})(MainContainer)
-
-
-// Use connect from react redux ? 
-
-// function mapStateToProps(state, ownProps) {
-//   // We need to lower case the login/name due to the way GitHub's API behaves.
-//   // Have a look at ../middleware/api.js for more details.
-//   const login = ownProps.params.login.toLowerCase()
-//   const name = ownProps.params.name.toLowerCase()
-
-//   const {
-//     pagination: { stargazersByRepo },
-//     entities: { users, repos }
-//   } = state
-
-//   const fullName = `${login}/${name}`
-//   const stargazersPagination = stargazersByRepo[fullName] || { ids: [] }
-//   const stargazers = stargazersPagination.ids.map(id => users[id])
-
-//   return {
-//     fullName,
-//     name,
-//     stargazers,
-//     stargazersPagination,
-//     repo: repos[fullName],
-//     owner: users[login]
-//   }
-// }
-
-// export default connect(mapStateToProps, {
-//   loadRepo,
-//   loadStargazers
-// })(googleWrappedComponent)
+})(HomeContainer)
 
 
