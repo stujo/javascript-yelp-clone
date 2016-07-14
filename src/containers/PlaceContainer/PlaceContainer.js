@@ -45,8 +45,8 @@ export class PlaceContainer extends React.Component {
     }
 
     render() {
-        const {placeDetail} = this.context.store.getState();
-        return (<PlaceDetail placeId={ placeDetail.placeId } place={ placeDetail.place } loading={ placeDetail.loading } />);
+        const {place} = this.context.store.getState();
+        return (<PlaceDetail placeId={ place.placeId } place={ place.place } loading={ place.loading } />);
     }
 }
 
