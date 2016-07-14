@@ -9,7 +9,7 @@ const Header = (props) => {
         <div className={ styles.topbar }>
           <div className={ styles.brand }>
             <Link to="/">
-            <h1>Yelp</h1>
+            <h1>Kelp Clone</h1>
             </Link>
           </div>
           <section>
