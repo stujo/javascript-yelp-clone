@@ -6,7 +6,7 @@ import { searchNearby } from 'utils/googleApiHelpers'
 
 import Header from 'components/Header/Header'
 
-import Sidebar from './Sidebar/Sidebar'
+import Sidebar from 'components/Sidebar/Sidebar'
 
 import styles from './styles.module.css'
 
