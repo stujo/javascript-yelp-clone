@@ -88,7 +88,7 @@ MainContainer.propTypes = {
     google: PropTypes.object,
     map: PropTypes.object,
     loaded: PropTypes.bool,
-    children: PropTypes.arrayOf(PropTypes.element)
+    children: PropTypes.object
 }
 
 MainContainer.contextTypes = {

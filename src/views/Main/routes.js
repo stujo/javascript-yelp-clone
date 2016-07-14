@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route } from 'react-router'
 import MainContainer from './MainContainer'
-import Map from './Map/Map'
+import Map from 'components/Map/Map'
 import PlaceContainer from 'containers/PlaceContainer/PlaceContainer'
 
 const ROOT_PATH = "/"
