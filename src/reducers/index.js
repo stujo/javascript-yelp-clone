@@ -76,13 +76,13 @@ const initialPlaceDetail = {
 
 function placeDetail(state = initialPlaceDetail, action) {
     switch (action.type) {
-    case 'PLACE_DETAIL.LOADING':
+    case 'PLACE.LOADING':
         return Object.assign({}, state, {
             place: null,
             placeId: action.placeId,
             loading: true
         })
-    case 'PLACE_DETAIL.GOT_PLACE':
+    case 'PLACE.GOT_PLACE':
         if (state.loading) {
             if (state.placeId === action.placeId) {
                 return Object.assign({}, state, {
