@@ -4,6 +4,9 @@ import { getDetails } from 'utils/googleApiHelpers'
 
 import PlaceDetail from 'components/PlaceDetail/PlaceDetail'
 
+import * as placeActions from 'actions/place'
+import * as loggingActions from 'actions/logging'
+
 
 export class PlaceContainer extends React.Component {
 
@@ -25,30 +28,19 @@ export class PlaceContainer extends React.Component {
         const {google, map} = this.props;
         const {placeId} = this.props.params;
 
-        this.context.store.dispatch({
-            type: 'PLACE_DETAIL.LOADING',
-            placeId
-        })
+        this.context.store.dispatch(placeActions.loading(placeId));
 
         getDetails(google, map, placeId)
             .then((place) => {
-                console.log("Place", place)
-                this.context.store.dispatch({
-                    type: 'PLACE_DETAIL.GOT_PLACE',
-                    placeId,
-                    place
-                })
+                this.context.store.dispatch(placeActions.gotPlace(placeId, place))
             }).catch((status, result) => {
             // There was an error
-            this.context.store.dispatch({
-                type: 'ERROR',
-                details: {
-                    component: 'PlaceContainer',
-                    placeId,
-                    status,
-                    result
-                }
-            })
+            this.context.store.dispatch(loggingActions.error({
+                placeId,
+                status,
+                result
+            }
+            ))
         })
     }
 

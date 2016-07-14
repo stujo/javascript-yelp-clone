@@ -27,7 +27,6 @@ const mountNode = document.querySelector('#root');
 
 const store = createStore(kelpAppReducers)
 
-console.log("STORE")
 window.store = store;
 
 // TODO LATER

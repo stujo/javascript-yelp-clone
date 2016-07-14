@@ -10,6 +10,10 @@ import Sidebar from 'components/Sidebar/Sidebar'
 
 import styles from './styles.module.css'
 
+import * as mapActions from 'actions/map'
+import * as placesActions from 'actions/places'
+import * as loggingActions from 'actions/logging'
+
 export class HomeContainer extends React.Component {
     onMarkerClick(item) {
         const {place} = item;
@@ -25,23 +29,18 @@ export class HomeContainer extends React.Component {
             types
         }
 
-        this.context.store.dispatch({
-            type: 'GOOGLE_MAP.GOT_MAP',
-            google,
-            map
-        })
+        this.context.store.dispatch(mapActions.ready(google, map))
+
+        this.context.store.dispatch(placesActions.loading())
 
         searchNearby(google, map, opts)
             .then((results, pagination) => {
-                console.log("searchNearby", results, pagination)
-                this.context.store.dispatch({
-                    type: 'PLACES.GOT_PLACES',
-                    places: results,
-                    pagination
-                })
+                this.context.store.dispatch(placesActions.gotPlaces(results, pagination))
             }).catch((status, result) => {
-            // There was an error
-            console.error(status, result)
+            this.context.store.dispatch(loggingActions.error({
+                status,
+                result
+            }))
         })
     }
 
