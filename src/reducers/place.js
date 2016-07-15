@@ -1,5 +1,5 @@
 const initialPlace = {
-    loading: true,
+    loading: false,
     placeId: null,
     place: null
 }
@@ -15,10 +15,12 @@ function place(state = initialPlace, action) {
     case 'PLACE.GOT_PLACE':
         if (state.loading) {
             if (state.placeId === action.placeId) {
-                return Object.assign({}, state, {
+
+                return {
+                    ...state,
                     place: action.place,
                     loading: false
-                })
+                }
             } else {
                 console.error("Loaded " + action.placeId + " but was expecting " + state.placeId)
                 return state;

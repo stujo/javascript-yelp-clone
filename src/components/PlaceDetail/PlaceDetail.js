@@ -19,20 +19,13 @@ function renderPhotos(place) {
 }
 
 function PlaceDetail(props) {
-    if (props.loading) {
-        return (<div className="loading">Loading Please Wait</div>);
-    } else {
-        const {place} = props;
-        const photos = place.photos || [];
-
-        return (<div>
-                  <h1>{ place.name }</h1>
-                  <div className={ styles.gallery }>
-                    { renderPhotos(place) }
-                  </div>
-                </div>
-            );
-    }
+    return (<div>
+              <h1>{ props.place.name }</h1>
+              <div className={ styles.gallery }>
+                { renderPhotos(props.place) }
+              </div>
+            </div>
+        );
 }
 
 export default PlaceDetail

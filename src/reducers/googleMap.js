@@ -1,4 +1,6 @@
 const initialGoogleMap = {
+    map: undefined,
+    google: undefined
 }
 
 function googleMap(state = initialGoogleMap, action) {

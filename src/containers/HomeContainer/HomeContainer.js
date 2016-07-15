@@ -29,14 +29,14 @@ export class HomeContainer extends React.Component {
             return (<noscript/>);
         }
 
-        const childrenWithProps = React.cloneElement(this.props.children,
-            {
-                google: state.googleMap.google,
-                onMarkerClick: this.onMarkerClick.bind(this)
-            });
+const childrenWithProps = React.cloneElement(this.props.children,
+    {
+        google: state.googleMap.google,
+        onMarkerClick: this.onMarkerClick.bind(this)
+    });
 
         return ( <div className={ styles.content }>
-                   { childrenWithProps }
+                   { this.props.children }
                  </div> )
     }
 
