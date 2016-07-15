@@ -11,12 +11,6 @@ import styles from './styles.module.css'
 import * as mapActions from 'actions/map'
 
 export class HomeContainer extends React.Component {
-    onMarkerClick(item) {
-        const {place} = item;
-        const {push} = this.context.router;
-        push(`/detail/${place.place_id}`)
-    }
-
     onReady(mapProps, map) {
         const {places, location} = this.context.store.getState()
         const {google} = this.props;
@@ -25,21 +19,14 @@ export class HomeContainer extends React.Component {
 
     content(state) {
         // Don't render an empty div as this messes up the layout
-        if (null === this.props.children) {
+        if (null === this.props.children || this.props.children.length == 0) {
             return (<noscript/>);
+        } else {
+            return ( <div className={ styles.content }>
+                       { this.props.children }
+                     </div> )
         }
-
-const childrenWithProps = React.cloneElement(this.props.children,
-    {
-        google: state.googleMap.google,
-        onMarkerClick: this.onMarkerClick.bind(this)
-    });
-
-        return ( <div className={ styles.content }>
-                   { this.props.children }
-                 </div> )
     }
-
 
     render() {
         const state = this.context.store.getState();
@@ -67,7 +54,6 @@ HomeContainer.propTypes = {
 }
 
 HomeContainer.contextTypes = {
-    router: PropTypes.object,
     store: PropTypes.object
 }
 
