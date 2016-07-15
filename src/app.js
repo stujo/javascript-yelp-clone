@@ -13,6 +13,8 @@ import { browserHistory, Router, Route, Redirect } from 'react-router'
 import 'font-awesome/css/font-awesome.css'
 import 'normalize.css/normalize.css'
 
+import GPSContainer from 'containers/GPSContainer/GPSContainer'
+
 // Uses webpack css alias for styles
 import 'css/app.css'
 
@@ -35,7 +37,9 @@ window.store = store;
 function render() {
     ReactDOM.render(
         <StoreContextProvider store={ store }>
-          <Router routes={ routes } history={ browserHistory } />
+          <GPSContainer>
+            <Router routes={ routes } history={ browserHistory } />
+          </GPSContainer>
         </StoreContextProvider>,
         mountNode
     );

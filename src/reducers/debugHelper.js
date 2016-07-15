@@ -19,6 +19,4 @@ const debugHelper = (state = {
     return state;
 }
 
-
-
 export default debugHelper;

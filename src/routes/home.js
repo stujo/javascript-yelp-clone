@@ -2,7 +2,7 @@ import React from 'react'
 import { Route } from 'react-router'
 import HomeContainer from 'containers/HomeContainer/HomeContainer'
 import PlaceContainer from 'containers/PlaceContainer/PlaceContainer'
-import Map from 'components/Map/Map'
+import MapContainer from 'containers/MapContainer/MapContainer'
 
 const ROOT_PATH = "/"
 
@@ -12,7 +12,7 @@ export const homeRoutes = {
     childRoutes: [
         {
             path: 'map',
-            component: Map
+            component: MapContainer
         },
         {
             path: 'detail/:placeId',

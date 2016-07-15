@@ -20,7 +20,7 @@ const Map = (props) => {
     const {google} = props;
 
     return (
-        <GoogleMap className={ styles.map } google={ google }>
+        <GoogleMap className={ styles.map } google={ google } center={ props.center } initialCenter={ props.center }>
           { renderMarkers(props) }
         </GoogleMap>
     )
