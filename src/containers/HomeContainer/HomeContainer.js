@@ -38,17 +38,27 @@ export class HomeContainer extends React.Component {
 
     render() {
         const state = this.context.store.getState();
+
+        const googleMapProps = {
+            google: state.googleMap.google,
+            onReady: this.onReady.bind(this),
+            visible: false,
+            containerStyle: {
+                width: 0,
+                height: 0
+            } // save the component taking over the page
+        }
+
         return (
             <div className={ styles.app }>
               <Header/>
               <div className={ styles.panel }>
-                <GoogleMap google={ state.googleMap.google || this.props.google } onReady={ this.onReady.bind(this) } visible={ false }>
-                  <div className={ styles.wrapper }>
-                    <PlacesContainer { ...state.googleMap } {...state.places} />
-                    { this.content(state) }
-                  </div>
-                </GoogleMap>
+                <div className={ styles.wrapper }>
+                  <PlacesContainer { ...state.googleMap } {...state.places} />
+                  { this.content(state) }
+                </div>
               </div>
+              <GoogleMap {...googleMapProps} />
             </div>
         )
     }
