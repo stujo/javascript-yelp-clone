@@ -1,4 +1,4 @@
-import { PropTypes, Component } from 'react'
+import { PropTypes, Component, Children } from 'react'
 
 export default class StoreContextProvider extends Component {
     getChildContext() {
@@ -9,7 +9,7 @@ export default class StoreContextProvider extends Component {
     }
 
     render() {
-        return this.props.children;
+        return Children.only(this.props.children)
     }
 }
 
