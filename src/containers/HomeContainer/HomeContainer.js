@@ -11,10 +11,18 @@ import styles from './styles.module.css'
 import * as mapActions from 'actions/map'
 
 export class HomeContainer extends React.Component {
+
+    // Called because the GoogleApiWrapper re-renders with new props when the
+    // the google api is loaded
+    componentWillReceiveProps(newProps) {
+        const {google} = newProps;
+        if (google != this.props.google) {
+            this.context.store.dispatch(mapActions.googleLoaded(google))
+        }
+    }
+
     onReady(mapProps, map) {
-        const {places, location} = this.context.store.getState()
-        const {google} = this.props;
-        this.context.store.dispatch(mapActions.ready(google, map))
+        this.context.store.dispatch(mapActions.mapReady(map))
     }
 
     content(state) {

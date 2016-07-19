@@ -1,7 +1,14 @@
-export const ready = (google, map) => {
+export const mapReady = (map) => {
     return {
         type: 'MAP.READY',
-        google,
         map
     }
 }
+
+export const googleLoaded = (google) => {
+    return {
+        type: 'MAP.GOOGLE_LOADED',
+        google
+    }
+}
+

@@ -1,15 +1,22 @@
 const initialGoogleMap = {
-    map: undefined,
-    google: undefined
+    map: null,
+    google: null
 }
 
 function googleMap(state = initialGoogleMap, action) {
     switch (action.type) {
     case 'MAP.READY':
-        return Object.assign({}, state, {
-            map: action.map,
+        return {
+            ...state,
+            map: action.map
+
+        };
+    case 'MAP.GOOGLE_LOADED':
+        return {
+            ...state,
             google: action.google
-        })
+
+        };
     default:
         return state
     }
