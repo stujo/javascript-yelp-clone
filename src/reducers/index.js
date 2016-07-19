@@ -8,7 +8,7 @@ import places from './places'
 import place from './place'
 import location from './location'
 
-
+import { routerReducer } from 'react-router-redux'
 
 let kelpAppReducers = combineReducers({
     debugHelper,
@@ -17,6 +17,7 @@ let kelpAppReducers = combineReducers({
     location,
     places,
     place,
+    routing: routerReducer
 })
 
 

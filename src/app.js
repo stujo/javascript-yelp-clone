@@ -10,6 +10,8 @@ import { createStore } from 'redux'
 
 import { browserHistory, Router, Route, Redirect } from 'react-router'
 
+import { syncHistoryWithStore } from 'react-router-redux'
+
 import 'font-awesome/css/font-awesome.css'
 import 'normalize.css/normalize.css'
 
@@ -29,7 +31,14 @@ const mountNode = document.querySelector('#root');
 
 const store = createStore(kelpAppReducers)
 
-window.store = store;
+
+// Create an enhanced history that syncs navigation events with the store
+const syncedHistory = syncHistoryWithStore(browserHistory, store)
+
+window.kelp = {
+    store,
+    history
+};
 
 // TODO LATER
 // const history = syncHistoryWithStore(browserHistory, store)
@@ -38,7 +47,7 @@ function render() {
     ReactDOM.render(
         <StoreContextProvider store={ store }>
           <GPSContainer>
-            <Router routes={ routes } history={ browserHistory } />
+            <Router routes={ routes } history={ syncedHistory } />
           </GPSContainer>
         </StoreContextProvider>,
         mountNode
